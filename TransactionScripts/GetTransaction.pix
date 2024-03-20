@@ -24,7 +24,7 @@
           <PropertyValue z:Id="i5">
             <PropertyName>Value</PropertyName>
             <_dataType>Expression</_dataType>
-            <_expression>dt_transactions.AsEnumerable()
+            <_expression>dt_transactions1.AsEnumerable()
 	.Where(row =&gt; string.IsNullOrEmpty($"{row["Статус"]}"))
 	.FirstOrDefault()</_expression>
             <_value i:nil="true" />
@@ -51,7 +51,7 @@
             <Childs>
               <AbstractStep z:Id="i9" i:type="ExecutedStep">
                 <Childs />
-                <Id>1a7c8701-a5b3-40d6-bbc7-73cdeacc2ef4</Id>
+                <Id>ec41b27b-64d1-46e0-9886-99693dc8c991</Id>
                 <Parent z:Ref="i8" />
                 <PropertyValues>
                   <PropertyValue z:Id="i10">
@@ -84,7 +84,7 @@
                   <PropertyValue z:Id="i13">
                     <PropertyName>Value</PropertyName>
                     <_dataType>Expression</_dataType>
-                    <_expression>$"{dt_transactions.Rows.IndexOf(row_transactionItem) + 1}"</_expression>
+                    <_expression>$"{dt_transactions1.Rows.IndexOf(row_transactionItem) + 1}"</_expression>
                     <_value i:nil="true" />
                     <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                   </PropertyValue>
@@ -145,17 +145,148 @@
             <Childs>
               <AbstractStep z:Id="i19" i:type="ExecutedStep">
                 <Childs />
-                <Id>66d00fc9-2238-4743-b3f9-9a8528827621</Id>
+                <Id>5c8e39ce-c9fc-4f93-950d-cc4ec3b3126d</Id>
                 <Parent z:Ref="i18" />
                 <PropertyValues>
                   <PropertyValue z:Id="i20">
+                    <PropertyName>Value</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>dt_transactions2.AsEnumerable()
+	.Where(row =&gt; string.IsNullOrEmpty($"{row["Статус"]}"))
+	.FirstOrDefault()</_expression>
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                  <PropertyValue z:Id="i21">
+                    <PropertyName>To</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>row_transactionItem</_expression>
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                </PropertyValues>
+                <SelectedOptionId i:nil="true" />
+                <EnableStatus>true</EnableStatus>
+                <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                <RetryCount>-1</RetryCount>
+                <Text>Первая транзакция, которая не имеет заполненного статуса</Text>
+                <_activityFullName>BR.Core.Base.Assign</_activityFullName>
+              </AbstractStep>
+              <AbstractStep z:Id="i22" i:type="ExecutedStep">
+                <Childs />
+                <Id>1a7c8701-a5b3-40d6-bbc7-73cdeacc2ef4</Id>
+                <Parent z:Ref="i18" />
+                <PropertyValues>
+                  <PropertyValue z:Id="i23">
+                    <PropertyName>Value</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>"В обработке"</_expression>
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                  <PropertyValue z:Id="i24">
+                    <PropertyName>To</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>row_transactionItem["Статус"]</_expression>
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                </PropertyValues>
+                <SelectedOptionId i:nil="true" />
+                <EnableStatus>true</EnableStatus>
+                <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                <RetryCount>-1</RetryCount>
+                <Text></Text>
+                <_activityFullName>BR.Core.Base.Assign</_activityFullName>
+              </AbstractStep>
+              <AbstractStep z:Id="i25" i:type="ExecutedStep">
+                <Childs />
+                <Id>424149ec-b498-4c72-8e2f-2ef480666f88</Id>
+                <Parent z:Ref="i18" />
+                <PropertyValues>
+                  <PropertyValue z:Id="i26">
+                    <PropertyName>Value</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>$"{dt_transactions2.Rows.IndexOf(row_transactionItem) + 1 + dt_transactions1.Rows.Count}"</_expression>
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                  <PropertyValue z:Id="i27">
+                    <PropertyName>To</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>str_transactionID</_expression>
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                </PropertyValues>
+                <SelectedOptionId i:nil="true" />
+                <EnableStatus>true</EnableStatus>
+                <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                <RetryCount>-1</RetryCount>
+                <Text></Text>
+                <_activityFullName>BR.Core.Base.Assign</_activityFullName>
+              </AbstractStep>
+              <AbstractStep z:Id="i28" i:type="ExecutedStep">
+                <Childs />
+                <Id>c8841821-0e9a-4fac-a848-9d1c32372a55</Id>
+                <Parent z:Ref="i18" />
+                <PropertyValues>
+                  <PropertyValue z:Id="i29">
+                    <PropertyName>Value</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>int_transCount + 1</_expression>
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                  <PropertyValue z:Id="i30">
+                    <PropertyName>To</PropertyName>
+                    <_dataType>Expression</_dataType>
+                    <_expression>int_transCount</_expression>
+                    <_value i:nil="true" />
+                    <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                  </PropertyValue>
+                </PropertyValues>
+                <SelectedOptionId i:nil="true" />
+                <EnableStatus>true</EnableStatus>
+                <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                <RetryCount>-1</RetryCount>
+                <Text>Количество обработанных транзакций</Text>
+                <_activityFullName>BR.Core.Base.Assign</_activityFullName>
+              </AbstractStep>
+            </Childs>
+            <Id>b15c706c-cbc0-45fe-a934-bc5d838fc5c1</Id>
+            <Parent z:Ref="i7" />
+            <PropertyValues>
+              <PropertyValue z:Id="i31">
+                <PropertyName>Condition</PropertyName>
+                <_dataType>Expression</_dataType>
+                <_expression>int_transCount &lt; Int32.Parse($"{dict_config["NumberOfTransactions"]}")</_expression>
+                <_value i:nil="true" />
+                <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+              </PropertyValue>
+            </PropertyValues>
+            <SelectedOptionId i:nil="true" />
+            <EnableStatus>true</EnableStatus>
+            <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+            <RetryCount>-1</RetryCount>
+            <Text></Text>
+            <_activityFullName>BR.Core.Base.ElseIf</_activityFullName>
+          </AbstractStep>
+          <AbstractStep z:Id="i32" i:type="ExecutedStep">
+            <Childs>
+              <AbstractStep z:Id="i33" i:type="ExecutedStep">
+                <Childs />
+                <Id>66d00fc9-2238-4743-b3f9-9a8528827621</Id>
+                <Parent z:Ref="i32" />
+                <PropertyValues>
+                  <PropertyValue z:Id="i34">
                     <PropertyName>Value</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>null</_expression>
                     <_value i:nil="true" />
                     <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                   </PropertyValue>
-                  <PropertyValue z:Id="i21">
+                  <PropertyValue z:Id="i35">
                     <PropertyName>To</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>str_transactionID</_expression>
@@ -185,7 +316,7 @@
         <Id>f03cb57d-a353-43fe-9f64-a8a1de41b905</Id>
         <Parent z:Ref="i2" />
         <PropertyValues>
-          <PropertyValue z:Id="i22">
+          <PropertyValue z:Id="i36">
             <PropertyName>Condition</PropertyName>
             <_dataType>Expression</_dataType>
             <_expression>row_transactionItem != null</_expression>
@@ -214,29 +345,41 @@
   <Name>GetTransaction.pix</Name>
   <Namespaces xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <Params>
-    <Parameter z:Id="i23">
+    <Parameter z:Id="i37">
       <DefaultValueExpression></DefaultValueExpression>
       <Description></Description>
       <Name>row_transactionItem</Name>
       <TypeString>System.Data.DataRow</TypeString>
     </Parameter>
-    <Parameter z:Id="i24">
+    <Parameter z:Id="i38">
       <DefaultValueExpression></DefaultValueExpression>
       <Description></Description>
       <Name>str_transactionID</Name>
       <TypeString>System.String</TypeString>
     </Parameter>
-    <Parameter z:Id="i25">
+    <Parameter z:Id="i39">
       <DefaultValueExpression></DefaultValueExpression>
       <Description></Description>
       <Name>int_transCount</Name>
       <TypeString>System.Int32</TypeString>
     </Parameter>
-    <Parameter z:Id="i26">
+    <Parameter z:Id="i40">
       <DefaultValueExpression></DefaultValueExpression>
       <Description></Description>
-      <Name>dt_transactions</Name>
+      <Name>dt_transactions1</Name>
       <TypeString>System.Data.DataTable</TypeString>
+    </Parameter>
+    <Parameter z:Id="i41">
+      <DefaultValueExpression></DefaultValueExpression>
+      <Description></Description>
+      <Name>dt_transactions2</Name>
+      <TypeString>System.Data.DataTable</TypeString>
+    </Parameter>
+    <Parameter z:Id="i42">
+      <DefaultValueExpression></DefaultValueExpression>
+      <Description></Description>
+      <Name>dict_config</Name>
+      <TypeString>System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]</TypeString>
     </Parameter>
   </Params>
   <TemplateVersion xmlns:d2p1="http://schemas.datacontract.org/2004/07/System" i:nil="true" />
